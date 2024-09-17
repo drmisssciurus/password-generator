@@ -44,6 +44,52 @@ body {
   margin: 0;
 }
 
+.button-wrapper {
+  margin-bottom: 10px;
+}
+
+.button {
+  margin: auto;
+  border: none;
+  width: 100%;
+  height: 34px;
+  border-radius: 5px;
+  font-family: 'Inria Sans', sans-serif;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #fff;
+  background-color: rgb(215, 43, 76); 
+  box-shadow:
+  rgba(162, 158, 215, 0.10) 1px 2px,
+  rgba(162, 158, 215, 0.08) 2px 3px,
+  rgba(162, 158, 215, 0.06) 3px 4px,
+  rgba(162, 158, 215, 0.04) 4px 5px;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.button:hover {
+  background-color: rgb(190, 12, 44);
+}
+
+.button:active {
+  background-color: rgb(165, 7, 33);
+  box-shadow: none;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(165, 7, 33);
+}
+
+.footer-text {
+  color: #fff;
+  text-align: center;
+}
+
 @media (max-width: 500px) {
   .list {
     display: grid;

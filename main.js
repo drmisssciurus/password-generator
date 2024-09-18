@@ -1,5 +1,5 @@
 const passwordLength = document.getElementById("password-length"),
-      button = document.getElementById("button"),
+      buttonPassMade = document.getElementById("button"),
       numbers = document.getElementById("numbers"),
       lowercaseCharacters = document.getElementById("lowercase-characters"),
       uppercaseharacters = document.getElementById("uppercase-characters"),
@@ -7,3 +7,8 @@ const passwordLength = document.getElementById("password-length"),
 
 
 console.log(passwordLength.value);
+
+buttonPassMade.addEventListener('click', ()=> {
+    console.log('Hello There');
+    
+});

@@ -1,10 +1,19 @@
 const userSelect = document.getElementById("password-length"),
-      buttonPassMade = document.getElementById("button"),
       numbers = document.getElementById("numbers"),
       lowercaseCharacters = document.getElementById("lowercase-characters"),
-      uppercaseharacters = document.getElementById("uppercase-characters"),
+      uppercaseCharacters = document.getElementById("uppercase-characters"),
+      buttonPassMade = document.getElementById("button"),
       newPassword = document.getElementById("new-password");
 
+//obj
+
+const randomFunc = {
+    lower: getRandomLower,
+    upper: getRandomUpper,
+    number: getRandomNumber
+};
+
+// Utils functions
 
 function getRandomLower() {
     return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
@@ -18,9 +27,6 @@ function getRandomNumber() {
     return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
 }
 
-console.log(typeof +userSelect.value); //!!!!!
-
-
 //function for sybmols
 
 // function getRandomSymbol() {
@@ -28,7 +34,18 @@ console.log(typeof +userSelect.value); //!!!!!
 //     return symbols[Math.floor(Math.random() * symbols.length)]
 // }
 
-const passwordLength = userSelect.value;
-buttonPassMade.addEventListener('click', ()=> {
-    console.log(Math.floor(Math.random() * 20));
+
+// button listener
+
+
+buttonPassMade.addEventListener('click', () => {
+    const passwordLength = +userSelect.value;
+
+    const hasNumber = numbers.checked;
+    const hasLower = lowercaseCharacters.checked;
+    const hasUpper = uppercaseCharacters.checked;
+
+
+    console.log(hasNumber, hasLower, hasUpper, passwordLength);
+    
 });

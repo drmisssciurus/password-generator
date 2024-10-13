@@ -65,6 +65,13 @@ header {
   margin: 0;
 }
 
+.list-input {
+  border: none;
+  background-color: lightgray;
+  padding: 10px;
+  color: black;
+}
+
 .button-wrapper {
   margin-bottom: 10px;
 }

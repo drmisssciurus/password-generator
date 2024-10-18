@@ -4,8 +4,11 @@ const userSelect = document.getElementById("password-length"),
       uppercaseCharacters = document.getElementById("uppercase-characters"),
       symbolsCharacters = document.getElementById("symbols-characters"),
       buttonPassGenerate = document.getElementById("button"),
+      clipboardButton = document.querySelector(".new-password-copy");
       newPassword = document.getElementById("new-password");
 
+
+      
 //obj
 
 const randomFunc = {
@@ -48,6 +51,25 @@ buttonPassGenerate.addEventListener('click', () => {
     // use value for input but for div u should use innerText or innerHTML
     newPassword.value = generatePassword(hasNumber, hasLower, hasUpper, hasSymbols, passwordLength);
 });
+
+// Copy password to clipboard
+
+clipboardButton.addEventListener('click', () => {
+    const textarea = document.createElement('textarea');
+    const password = newPassword.value;
+
+    if(!password) {
+        return;
+    }
+
+    textarea.value = password;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    textarea.remove();
+    alert('Password copied to clipboard!');
+});
+
 
 // Generate password function
 

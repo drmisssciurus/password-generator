@@ -84,6 +84,47 @@ select {
   font-size: 16px;
   padding: 10px;
   color: black;
+  border-radius: 5px;
+}
+
+.checkbox {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.list-checkbox {
+  display: inline-block;
+  width: 20px;
+  aspect-ratio: 1;
+
+  background-color: transparent;
+  border: 2px solid var(--footer-color);
+  border-radius: 25px;
+  vertical-align: sub;
+  margin-right: 5px;
+  position: relative;
+}
+
+.list-checkbox::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  aspect-ratio: 1;
+  background-color: var(--button-active);
+  border-radius: 25px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.2s ease-in;
+}
+
+.checkbox:checked + .list-checkbox::before {
+  transform: translate(-50%, -50%) scale(1);
+
 }
 
 .button-wrapper {
@@ -122,6 +163,7 @@ select {
 
 .new-password-wrapper {
   display: flex;
+  gap: 2px;
 }
 
 .new-password-copy {
@@ -129,7 +171,7 @@ select {
   padding: 5px;
   height: 40px;
   border: none;
-  background-color: var(--bg-color);
+  border-radius: 5px;
 }
 
 .footer {

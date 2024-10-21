@@ -4,7 +4,8 @@ const userSelect = document.getElementById("password-length"),
       uppercaseCharacters = document.getElementById("uppercase-characters"),
       symbolsCharacters = document.getElementById("symbols-characters"),
       buttonPassGenerate = document.getElementById("button"),
-      clipboardButton = document.querySelector(".new-password-copy");
+      excludeSimilarCharacters = document.getElementById("similar-characters"),
+      clipboardButton = document.querySelector(".new-password-copy"),
       newPassword = document.getElementById("new-password");
 
 
@@ -20,23 +21,32 @@ const randomFunc = {
 
 // Utils functions
 
-function getRandomLower() {
-    return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+function getRandomLower(excludeSimilar = false) {
+    const lowers = excludeSimilar ? 'abcdefghjkmnpqrstuvwxyz' : 'abcdefghijklmnopqrstuvwxyz';
+
+    console.log('getRandomLower: ' + lowers.length);
+    return lowers[Math.floor(Math.random() * lowers.length)];
 }
 
-function getRandomUpper() {
-    return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+function getRandomUpper(excludeSimilar = false) {
+    const uppers = excludeSimilar ? 'ABCDEFGHJKMNPQRSTUVWXYZ' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    console.log('getRandomUpper: ' + uppers.length);
+    return uppers[Math.floor(Math.random() * uppers.length)];
 }
 
-function getRandomNumber() {
-    return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+function getRandomNumber(excludeSimilar = false) {
+    const numbers = excludeSimilar ? '23456789' : '0123456789';
+
+    console.log('getRandomNumber: ' + numbers.length);
+    return numbers[Math.floor(Math.random() * numbers.length)];
 }
 
 //function for sybmols
 
 function getRandomSymbol() {
     const symbols = "!@#$%^&*()_+[]{}|;:',.<>?/~`-=";
-    return symbols[Math.floor(Math.random() * symbols.length)]
+    return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
 // Generate event listen
@@ -77,15 +87,11 @@ const generatePassword = (number, lower, upper, symbol, length) => {
     //1. Init passw var
     let generatedPassword = '';
     const typesCount = number + lower + upper + symbol;
-
-    // console.log('typesCount: ', typesCount);
     
     const typesArr = [{ number }, { lower }, { upper }, { symbol }]
     .filter(
         item => Object.values(item)[0]
     );
-
-    // console.log('typesArr: ', typesArr);
 
     //2. Filter out unchecked types
 
@@ -93,15 +99,15 @@ const generatePassword = (number, lower, upper, symbol, length) => {
         return '';
     }
 
+    const excludeSimilar = excludeSimilarCharacters.checked;
+
     //3. Loop ower lenght call generator funk for each type
 
     for(let i = 0; i < length; i += typesCount) {
         typesArr.forEach(type => {
             const funcName = Object.keys(type)[0];
 
-            // console.log('funcName: ', funcName);
-
-            generatedPassword += randomFunc[funcName]();
+            generatedPassword += randomFunc[funcName](excludeSimilar);
         });
     }
 

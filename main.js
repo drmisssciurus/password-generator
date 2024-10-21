@@ -23,22 +23,16 @@ const randomFunc = {
 
 function getRandomLower(excludeSimilar = false) {
     const lowers = excludeSimilar ? 'abcdefghjkmnpqrstuvwxyz' : 'abcdefghijklmnopqrstuvwxyz';
-
-    console.log('getRandomLower: ' + lowers.length);
     return lowers[Math.floor(Math.random() * lowers.length)];
 }
 
 function getRandomUpper(excludeSimilar = false) {
     const uppers = excludeSimilar ? 'ABCDEFGHJKMNPQRSTUVWXYZ' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-    console.log('getRandomUpper: ' + uppers.length);
     return uppers[Math.floor(Math.random() * uppers.length)];
 }
 
 function getRandomNumber(excludeSimilar = false) {
     const numbers = excludeSimilar ? '23456789' : '0123456789';
-
-    console.log('getRandomNumber: ' + numbers.length);
     return numbers[Math.floor(Math.random() * numbers.length)];
 }
 

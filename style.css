@@ -60,7 +60,7 @@ select {
 .title {
   text-align: center;
   padding: 25px;
-  font-size: clamp(1.5rem, 3.5vw, 4rem);
+  font-size: clamp(1rem, 3.5vw, 4rem);
   color: var(--main-black);
 }
 .list {
